@@ -12,11 +12,15 @@ console.log('Command: ', command);
 console.log('Yargs', argv);
 
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
-  notes.getAll();
+  var getAllNotes = notes.getAll();
+  console.log(getAllNotes);
+  console.log(`Printing: ${getAllNotes.length} Notes`);
+  getAllNotes.forEach(note => notes.logNote(note));
 } else if (command === 'read') {
-  notes.getNote(argv.title);
+  var note = notes.getNote(argv.title);
+  notes.logNote(note);
 } else if (command === 'remove') {
   notes.removeNote(argv.title);
 } else {

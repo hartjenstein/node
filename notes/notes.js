@@ -1,4 +1,3 @@
-console.log('Starting notes.js');
 
       // no need to install fs because its a core node module
 const fs = require('fs');
@@ -22,7 +21,7 @@ var savedNotes = (notes) => {
 
 var addNote = (title, body) => {
   var notes = fetchNotes();
-      //shortend es6 syntax for object properties..
+      //shortend es6 syntax for object properties (title: title; body: body)..
   var note = {
     title,
     body

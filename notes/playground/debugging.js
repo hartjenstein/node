@@ -1,8 +1,9 @@
 var person = {
-    name: 'Nick'
-}
+  name: 'Andrew'
+};
 
-person.age = 99;
+person.age = 25;
+
 debugger;
 
 person.name = 'Mike';

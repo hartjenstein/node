@@ -6,8 +6,8 @@ const weather = require('./weather/weather');
 const argv = yargs.options({
     a: {
         demand: true,
-        alias: 'adress',
-        describe: 'Adress to fetch weather for',
+        alias: 'address',
+        describe: 'Address to fetch weather for',
         string: true
         }
     })
@@ -15,18 +15,20 @@ const argv = yargs.options({
     .alias('help', 'h')
     .argv;
  // geocode.geocodeAdress() takes a callback as the second arguement which gets the errors passed over from geocode.js
-geocode.geocodeAdress(argv.adress, (errorMessage, results) => {
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
     if(errorMessage) {
         console.log(errorMessage);
     } else {
-        console.log(JSON.stringify(results, undefined, 2));
+        console.log(results.address);
+     
+        weather.geoWeather(results.lat, results.long, (errorMessage, weatherResults) => {
+            if(errorMessage) {
+            console.log(errorMessage);
+            } else {
+            console.log(`Its ${weatherResults.temperature} Degrees Fahrenheit. \n It feels like ${weatherResults.apparentTemp}`);
+            }
+        });
     }
 });
 
-weather.geoWeather(39.757114, -90.94686399999999, (errorMessage, result) => {
-    if(errorMessage) {
-        console.log(errorMessage);
-    } else {
-        console.log(JSON.stringify(result, undefined, 2));
-    }
-});    
+    

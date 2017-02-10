@@ -15,13 +15,13 @@ var geocodeAddress = (address) => {
                     long: body.results[0].geometry.location.lng
                 });  
             } else { 
-                reject('Unable to find adress'); 
+                reject('Unable to find address'); 
             }
         });
     });
 };
 
-geocodeAddress('19146').then((location) => {
+geocodeAddress('00000').then((location) => {
     console.log(JSON.stringify(location, undefined, 2));
     }, (errorMessage) => {
         console.log(errorMessage);

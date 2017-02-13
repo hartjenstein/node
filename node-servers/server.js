@@ -43,7 +43,7 @@ hbs.registerHelper('screamIt', (text) => {
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Home Page',
-    welcome: 'Oi, whats the crack?',
+    welcome: 'Oi, whats the crack?'
   });
 });
 

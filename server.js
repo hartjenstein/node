@@ -43,20 +43,20 @@ hbs.registerHelper('screamIt', (text) => {
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'Home Page',
-    welcome: 'Oi, whats the crack?',
+    welcome: 'Oi, whats the crack?'
   });
 });
 
-app.get('/', (req, res) => {
+app.get('/projects', (req, res) => {
   res.render('projects.hbs', {
     pageTitle: 'Projects',
-    projectsWelcome: 'My personal projects',
+    projectsWelcome: 'My personal projects'
   });
 });
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
-    pageTitle: 'About Page',
+    pageTitle: 'About Page'
   });
 });
 

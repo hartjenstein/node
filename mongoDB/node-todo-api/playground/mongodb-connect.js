@@ -29,7 +29,7 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) =>  {
     }
     
     console.log(JSON.stringify(result.ops, undefined, 2));
-});
+});*/
 // pretty printing..
     // .ops attribute is going to store all the docs we've inserted
 
@@ -42,7 +42,7 @@ db.collection('Users').insertOne({
         return console.log('unable to insert', Users);
     }
     console.log(JSON.stringify(result.ops, undefined, 2))
-});*/
+});
 
 db.close();
 });

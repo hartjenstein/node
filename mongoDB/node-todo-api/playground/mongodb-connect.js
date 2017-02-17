@@ -41,7 +41,7 @@ db.collection('Users').insertOne({
     if(err) {
         return console.log('unable to insert', Users);
     }
-    console.log(JSON.stringify(result.ops, undefined, 2))
+    console.log(JSON.stringify(result.ops, undefined, 2));
 });
 
 db.close();

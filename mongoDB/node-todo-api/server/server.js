@@ -1,43 +1,28 @@
- let mongoose = require('mongoose');
-// telling mongoose that we wanna use the built in promise library
- mongoose.promise = global.promise;
- mongoose.connect('mongodb://localhost:27017/TodoApp');
+// server file is just for our routes now
+let express = require('express');
+//body-parser converts JSON into an object 
+let bodyParser = require('body-parser');
+// destructing object - ES6 (saving the mongoose return value in the variable)
+let { mongoose } = require('./db/mongoose');
+let { Todo } = require('./models/todo');
+let { User } = require('./models/user');
 
- let Todo = mongoose.model('Todo', {
-     text: {
-        type: String,
-        required: true,
-        minlength:1,
-        trim: true
-     },
-     completed:{
-        type: Boolean,
-        default: false
-     },
-     completedAt: {
-        type: Number,
-        default: null 
-     }
- });
+let app = express();
+//crud - create read update delete
 
-/* let newTodo = new Todo({
-     text: 'Cook dinner'
- });
- newTodo.save().then((doc) => {
-    console.log('Saved todo', doc);
- }, (e) => {
-     console.log('Unable to save todo');
- });*/
+app.use(bodyParser.json());
 
- let newTodo2 = new Todo({
-     text: 'Send package',
-     completed: true,
-     completedAt: 123
- });
- newTodo2.save().then((doc) => {
-     console.log(JSON.stringify(doc, undefined, 2));
- }, (e) => {
-    console.log('Unable to to save', e);
- });
+app.post('/todos', (req, res) => {
+   let todo = new Todo({
+       text: req.body.text
+    });
 
- 
+    todo.save().then((doc) => {
+    res.send(doc);
+    }, (e) => {
+    res.status(400).send(e);
+    });
+});
+app.listen(3000, () => {
+    console.log('started on port 3000');
+});

@@ -23,6 +23,15 @@ app.post('/todos', (req, res) => {
     res.status(400).send(e);
     });
 });
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        // sending todos as an array (res.send(todos)) would not allow us to add any properties
+        // with ES6 we can send it as an object: res.send({todos})
+        res.send({todos})
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
 app.listen(3000, () => {
     console.log('started on port 3000');
 });

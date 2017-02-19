@@ -1,6 +1,6 @@
  let mongoose = require('mongoose');
  let User = mongoose.model('User', {
-     user: {
+     userName: {
         type: String,
         required: true,
         minlength:1,
